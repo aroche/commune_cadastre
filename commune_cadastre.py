@@ -72,10 +72,9 @@ class CommuneCadastre:
 
         # Declare instance attributes
         self.actions = []
-        self.menu = self.tr(u'&France Commune Cadastre')
+        self.menu = self.tr(u'&Commune Cadastre')
         # TODO: We are going to let the user set this up in a future iteration
-        self.toolbar = self.iface.addToolBar(u'CommuneCadastre')
-        self.toolbar.setObjectName(u'CommuneCadastre')
+        self.toolbar = self.iface.pluginToolBar()
 
         #print "** INITIALIZING CommuneCadastre"
 
@@ -167,7 +166,7 @@ class CommuneCadastre:
             self.toolbar.addAction(action)
 
         if add_to_menu:
-            self.iface.addPluginToWebMenu(
+            self.iface.addPluginToMenu(
                 self.menu,
                 action)
 
@@ -182,7 +181,7 @@ class CommuneCadastre:
         icon_path = ':/plugins/commune_cadastre/icon.png'
         self.add_action(
             icon_path,
-            text=self.tr(u'Recherche commune parcelle'),
+            text=self.tr(u'Recherche commune et parcelle'),
             callback=self.run,
             parent=self.iface.mainWindow())
 
@@ -213,16 +212,14 @@ class CommuneCadastre:
 
         #print "** UNLOAD CommuneCadastre"
 
-        if self.parcelleRubberBand:
-            self.parcelleRubberBand.reset()
+        if self.rubberBand:
+            self.rubberBand.reset()
 
         for action in self.actions:
-            self.iface.removePluginWebMenu(
-                self.tr(u'&France Commune Cadastre'),
+            self.iface.removePluginMenu(
+                self.tr(u'&Commune Cadastre'),
                 action)
             self.iface.removeToolBarIcon(action)
-        # remove the toolbar
-        del self.toolbar
 
     #--------------------------------------------------------------------------
 

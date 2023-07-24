@@ -7,6 +7,7 @@ wgs84 = QgsCoordinateReferenceSystem('EPSG:4326')
 
 def geoJson2geom(ft):
     # only for Multipolygon and polygon (for the moment)
+    # assumes that the original data is in WGS84
     parts = ft['coordinates']
     if ft['type'] == 'Polygon':
         parts = [parts]
