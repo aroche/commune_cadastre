@@ -24,7 +24,7 @@
 from qgis.PyQt.QtCore import QSettings, QTranslator, QCoreApplication, Qt, QUrl, QUrlQuery
 from qgis.PyQt.QtGui import QIcon, QIntValidator, QColor
 from qgis.PyQt.QtWidgets import QAction, QFormLayout
-from qgis.core import (QgsNetworkContentFetcher, QgsMessageLog, Qgis, QgsWkbTypes)
+from qgis.core import QgsNetworkContentFetcher, Qgis, QgsWkbTypes
 from qgis.gui import QgsRubberBand
 
 from .commune_selector import CommuneSelector
@@ -285,7 +285,6 @@ class CommuneCadastre:
         params.addQueryItem('code_insee', insee_com)
         url = QUrl(self.CADASTRE_API_URL + 'feuille')
         url.setQuery(params)
-        QgsMessageLog.logMessage(f"fetching {url.toDisplayString()}", level=Qgis.Info)
         self.sections_manager.fetchContent(url)
 
     def on_sections_dl(self):
@@ -313,7 +312,6 @@ class CommuneCadastre:
         if val != ' ':
             self.dockwidget.numeroLineEdit.setEnabled(True)
 
-
     def search(self):
         """ Looks for the parcelle or commune entered """
         insee_com = self.commune_widget.get_insee()
@@ -338,9 +336,7 @@ class CommuneCadastre:
         params.addQueryItem('numero', numero)
         url = QUrl(self.CADASTRE_API_URL + 'parcelle')
         url.setQuery(params)
-        QgsMessageLog.logMessage(f"fetching {url.toDisplayString()}", level=Qgis.Info)
         self.parcelles_manager.fetchContent(url)
-
 
     def on_parcelle_dl(self):
         content = self.parcelles_manager.contentAsString()

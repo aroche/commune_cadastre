@@ -27,7 +27,7 @@ import json
 from qgis.PyQt.QtCore import Qt, QUrl, QUrlQuery, QModelIndex, pyqtSignal
 from qgis.PyQt.QtGui import QStandardItemModel, QStandardItem
 from qgis.PyQt.QtWidgets import QCompleter, QLineEdit
-from qgis.core import QgsNetworkContentFetcher, QgsMessageLog, Qgis
+from qgis.core import QgsNetworkContentFetcher
 from .utils import geoJson2geom
 
 
@@ -62,7 +62,6 @@ class CommuneSelector(QLineEdit):
         # NB: recupérer le nom du dept ? (fields=departement)
         url = QUrl(self.COMMUNES_API_URL)
         url.setQuery(params)
-        QgsMessageLog.logMessage(f"fetching {url.toDisplayString()}", level=Qgis.Info)
         self.communesFetcher.fetchContent(url)
 
     def commune_results(self):

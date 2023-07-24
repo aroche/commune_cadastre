@@ -2,6 +2,9 @@ from qgis.core import (QgsGeometry, QgsPointXY, QgsCoordinateReferenceSystem,
                         QgsCoordinateTransform, QgsProject)
 
 
+wgs84 = QgsCoordinateReferenceSystem('EPSG:4326')
+
+
 def geoJson2geom(ft):
     # only for Multipolygon and polygon (for the moment)
     parts = ft['coordinates']
@@ -18,7 +21,7 @@ def geoJson2geom(ft):
         polygons.append(rings)
     geom = QgsGeometry.fromMultiPolygonXY(polygons)
     crs = QgsProject.instance().crs()
-    transform = QgsCoordinateTransform(QgsCoordinateReferenceSystem('EPSG:4326'), crs, 
+    transform = QgsCoordinateTransform(wgs84, crs, 
                                         QgsProject.instance().transformContext())
     geom.transform(transform)
     return geom
