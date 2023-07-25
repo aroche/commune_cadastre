@@ -38,7 +38,7 @@ LOCALES = fr
 # translation
 SOURCES = \
 	__init__.py \
-	commune_cadastre.py commune_cadastre_dockwidget.py
+	commune_cadastre.py commune_cadastre_dockwidget.py utils.py commune_selector.py
 
 PLUGINNAME = commune_cadastre
 

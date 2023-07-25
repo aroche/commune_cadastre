@@ -5,15 +5,15 @@
 [general]
 name=France Commune Cadastre
 qgisMinimumVersion=3.0
-description=Permet d'identifier une commune ou une parcelle cadastrale sur la carte
+description=Search for a cadastral parcel with the French cadastre API
 version=0.1
 author=Augustin Roche
-email=augustin.roche@enertrag.com
+email=augustin.roche@gmail.com
 
-about=Ce module permet de rechercher une parcelle cadastrale ou une commune et de l'afficher sur la carte. Il itilise l'API de l'IGN.
+about=Ce module permet de rechercher une parcelle cadastrale ou une commune et de l'afficher sur la carte. Il utilise l'API de l'IGN.
 
-tracker=http://bugs
-repository=http://repo
+tracker=https://github.com/aroche/commune_cadastre/issues
+repository=https://github.com/aroche/commune_cadastre
 # End of mandatory metadata
 
 # Recommended items:
@@ -23,9 +23,9 @@ hasProcessingProvider=no
 # changelog=
 
 # Tags are comma separated with spaces allowed
-tags=python cadasre parcelle commune
+tags=python cadastre parcelle commune
 
-homepage=http://homepage
+homepage=https://github.com/aroche/commune_cadastre
 category=Web
 icon=icon.png
 # experimental flag
@@ -40,7 +40,7 @@ deprecated=False
 # plugin_dependencies=
 
 Category of the plugin: Raster, Vector, Database or Web
-# category=
+category=Web
 
 # If the plugin can run on QGIS Server.
 server=False
