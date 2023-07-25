@@ -234,15 +234,15 @@ class CommuneCadastre:
             # dockwidget may not exist if:
             #    first run of plugin
             #    removed on close (see self.onClosePlugin method)
-            if self.dockwidget == None:
+            if self.dockwidget is None:
                 # Create the dockwidget (after translation) and keep reference
                 self.dockwidget = CommuneCadastreDockWidget()
+                self.commune_widget = CommuneSelector(self.dockwidget)
+                self.dockwidget.formLayout.setWidget(0, QFormLayout.FieldRole, self.commune_widget)
 
             # connect to provide cleanup on closing of dockwidget
-            self.dockwidget.closingPlugin.connect(self.onClosePlugin)
-
-            self.commune_widget = CommuneSelector(self.dockwidget)
-            self.dockwidget.formLayout.setWidget(0, QFormLayout.FieldRole, self.commune_widget)
+            self.dockwidget.closingPlugin.connect(self.onClosePlugin)                
+            
             self.dockwidget.numeroLineEdit.setValidator(QIntValidator(0, 9999))
 
             self.sections_manager = QgsNetworkContentFetcher()
